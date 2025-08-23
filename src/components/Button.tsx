@@ -16,8 +16,8 @@ type ButtonAsLink = BaseProps & React.AnchorHTMLAttributes<HTMLAnchorElement> & 
 type ButtonProps = ButtonAsButton | ButtonAsLink;
 
 const VariantStyles: Record<ButtonVariant, string> = {
-  primary: 'bg-zinc-950 border-zinc-600 text-slate-200 hover:bg-zinc-900',
-  secondary: 'bg-zinc-800 border-zinc-500 text-slate-100 hover:bg-zinc-700',
+  primary: 'bg-zinc-800 border-zinc-600 text-slate-200 hover:bg-zinc-700',
+  secondary: 'bg-zinc-700 border-zinc-500 text-slate-100 hover:bg-zinc-600',
   success: 'bg-green-800 border-green-600 text-white hover:bg-green-700',
   danger: 'bg-red-800 border-red-600 text-white hover:bg-red-700'
 };
