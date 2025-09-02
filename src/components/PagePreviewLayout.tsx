@@ -1,5 +1,5 @@
 import { ChevronLeft } from 'lucide-react';
-import Button from './Button';
+import Button from './elements/Button';
 import IframeWrapper from './IframeWrapper';
 
 interface LayoutProps {
