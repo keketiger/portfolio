@@ -3,11 +3,14 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
 import { CarouselProvider } from './context/Carousel.tsx'
+import { HashRouter } from 'react-router-dom'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <CarouselProvider>
-      <App />
-    </CarouselProvider>
+    <HashRouter>
+      <CarouselProvider>
+        <App />
+      </CarouselProvider>
+    </HashRouter>
   </StrictMode>,
 )

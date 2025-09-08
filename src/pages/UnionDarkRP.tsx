@@ -26,10 +26,10 @@ const UnionDarkRP = () => {
           <meta content="summary_large_image" property="twitter:card" />
           <meta content="Union Dark RP" property="twitter:title" />
           <meta content="" property="twitter:description" />
-          <link rel='icon' href='../projets/union-darkrp/favicon.ico' />
+          <link rel='icon' href='./projets/union-darkrp/favicon.ico' />
           <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
           <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-          <link href="../projets/union-darkrp/style.css" rel="stylesheet" />
+          <link href="./projets/union-darkrp/style.css" rel="stylesheet" />
         </>
       }
     >
@@ -50,7 +50,7 @@ const UnionDarkRP = () => {
           <div className="collapse navbar-collapse" id="navbarNavDropdown">
             <ul className="ml-auto navbar-nav">
               <li className="nav-item">
-                <a className="nav-link" href="./forum/">Forum</a>
+                <a className="nav-link" href="#">Forum</a>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="https://discord.gg/QUeQFwd" target="_blank">Discord</a>
@@ -59,7 +59,7 @@ const UnionDarkRP = () => {
                 <a className="nav-link" href="https://steamcommunity.com/sharedfiles/filedetails/?id=2162992855" target="_blank">Workshop</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/boutique">Boutique</a>
+                <a className="nav-link" href="#">Boutique</a>
               </li>
             </ul>
           </div>
@@ -69,7 +69,7 @@ const UnionDarkRP = () => {
       <main role="main">
         <section className="text-center header">
           <div className="container">
-            <img src="../projets/union-darkrp/logo.webp" />
+            <img src="./projets/union-darkrp/logo.webp" />
             <h1 className="text-white jumbotron-heading">Union Dark RP</h1>
             <p className="text-white lead">Communauté Garry's Mod</p>
             <p>
@@ -132,12 +132,12 @@ const UnionDarkRP = () => {
                 <li data-slide-to="6.jpg" data-target="#carouselGallery"></li>
               </ol>
               <div className="carousel-inner">
-                <div className="carousel-item active"><img src="../projets/union-darkrp/carousel/1.jpg" alt="1.jpg" className="d-block w-100" /></div>
-                <div className="carousel-item"><img src="../projets/union-darkrp/carousel/2.jpg" alt="2.jpg" className="d-block w-100" /></div>
-                <div className="carousel-item"><img src="../projets/union-darkrp/carousel/3.jpg" alt="3.jpg" className="d-block w-100" /></div>
-                <div className="carousel-item"><img src="../projets/union-darkrp/carousel/4.jpg" alt="4.jpg" className="d-block w-100" /></div>
-                <div className="carousel-item"><img src="../projets/union-darkrp/carousel/5.jpg" alt="5.jpg" className="d-block w-100" /></div>
-                <div className="carousel-item"><img src="../projets/union-darkrp/carousel/6.jpg" alt="6.jpg" className="d-block w-100" /></div>
+                <div className="carousel-item active"><img src="./projets/union-darkrp/carousel/1.jpg" alt="1.jpg" className="d-block w-100" /></div>
+                <div className="carousel-item"><img src="./projets/union-darkrp/carousel/2.jpg" alt="2.jpg" className="d-block w-100" /></div>
+                <div className="carousel-item"><img src="./projets/union-darkrp/carousel/3.jpg" alt="3.jpg" className="d-block w-100" /></div>
+                <div className="carousel-item"><img src="./projets/union-darkrp/carousel/4.jpg" alt="4.jpg" className="d-block w-100" /></div>
+                <div className="carousel-item"><img src="./projets/union-darkrp/carousel/5.jpg" alt="5.jpg" className="d-block w-100" /></div>
+                <div className="carousel-item"><img src="./projets/union-darkrp/carousel/6.jpg" alt="6.jpg" className="d-block w-100" /></div>
               </div>
               <a className="carousel-control-prev" href="#carouselGallery" data-slide="prev" role="button"><span className="carousel-control-prev-icon" aria-hidden="true"></span><span className="sr-only">Précédent</span></a>
               <a className="carousel-control-next" href="#carouselGallery" data-slide="next" role="button"><span className="carousel-control-next-icon" aria-hidden="true"></span><span className="sr-only">Suivant</span></a>

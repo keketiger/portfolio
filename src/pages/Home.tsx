@@ -12,8 +12,8 @@ function Home() {
   const { openCarousel } = useCarousel();
 
   const tigerRadioImages = [
-    '/projets/tiger-radio/preview1.webp',
-    '/projets/tiger-radio/preview2.webp'
+    './projets/tiger-radio/preview1.webp',
+    './projets/tiger-radio/preview2.webp'
   ];
 
   const ProjectCard = ({
@@ -59,7 +59,7 @@ function Home() {
     <>
       <div className='min-h-screen bg-gray-50 text-gray-800'>
         <header className='p-6 bg-white shadow-md flex flex-col md:flex-row justify-between items-center'>
-          <h1 className='text-2xl font-bold'>Portfolio de Kevin Fort</h1>
+          <h1 className='text-2xl font-bold'>Portfolio de Kevin FORT</h1>
           <nav className='space-x-4'>
             <a href='#competences' className='hover:text-blue-600'>Compétences</a>
             <a href='#projets' className='hover:text-blue-600'>Projets</a>
@@ -85,7 +85,7 @@ function Home() {
               animate={{ scale: 1 }}
               transition={{ duration: 0.5 }}
             />
-            <h2 className='text-3xl font-bold text-shadow-md'>Technicien Supérieur Systèmes & Réseaux</h2>
+            <h2 className='text-3xl font-bold text-shadow-md'>Développeur / Technicien Supérieur Systèmes & Réseaux</h2>
             <p className='text-gray-800 2xl:text-gray-100 text-shadow-md max-w-xl mt-4'>
               Passionné d'informatique depuis toujours, spécialisé en systèmes, réseaux, virtualisation et développement web.
             </p>
@@ -204,7 +204,7 @@ function Home() {
                 </p>
               }
               buttons={
-                <Button href='/portfolio/projets/union-darkrp' iconLeft={<Info />}>Prévisualiser</Button>
+                <Button href='#/projets/union-darkrp' iconLeft={<Info />}>Prévisualiser</Button>
               }
             />
             <ProjectCard
