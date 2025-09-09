@@ -7,9 +7,10 @@ interface LayoutProps {
   description: string;
   headContent?: React.ReactNode;
   children: React.ReactNode;
+  onReady?: (doc: Document) => void;
 }
 
-const PagePreviewLayout: React.FC<LayoutProps> = ({ title, description, headContent, children }) => {
+const PagePreviewLayout: React.FC<LayoutProps> = ({ title, description, headContent, children, onReady }) => {
   const iframeHead = (
     <>
       <title>{title}</title>
@@ -34,6 +35,7 @@ const PagePreviewLayout: React.FC<LayoutProps> = ({ title, description, headCont
           <IframeWrapper
             head={iframeHead}
             className='w-full h-[80vh] border border-gray-500 rounded-md bg-white'
+            onReady={onReady}
           >
             {children}
           </IframeWrapper>

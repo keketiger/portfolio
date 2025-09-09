@@ -1,4 +1,6 @@
 import clsx from 'clsx';
+import { scrollToElementById } from '../../utils/scrollToElements';
+import { Link } from 'react-router';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'success' | 'danger';
 
@@ -11,9 +13,10 @@ interface BaseProps {
 }
 
 type ButtonAsButton = BaseProps & React.ButtonHTMLAttributes<HTMLButtonElement> & { href?: undefined };
-type ButtonAsLink = BaseProps & React.AnchorHTMLAttributes<HTMLAnchorElement> & { href: string };
+type ButtonAsAnchor = BaseProps & React.AnchorHTMLAttributes<HTMLAnchorElement> & { href: string; to?: undefined };
+type ButtonAsRouteLink = BaseProps & { to: string; href?: undefined };
 
-type ButtonProps = ButtonAsButton | ButtonAsLink;
+type ButtonProps = ButtonAsButton | ButtonAsAnchor | ButtonAsRouteLink;
 
 const VariantStyles: Record<ButtonVariant, string> = {
   primary: 'bg-zinc-800 border-zinc-600 text-slate-200 hover:bg-zinc-700',
@@ -48,6 +51,31 @@ export default function Button(props: ButtonProps) {
       {iconRight && <span className={clsx(iconClasses, 'ml-2')}>{iconRight}</span>}
     </>
   );
+
+  if ('to' in props && props.to) {
+    return (
+      <Link to={props.to} className={commonClasses}>
+        {content}
+      </Link>
+    );
+  }
+
+  if (href && href.startsWith('#')) {
+    return (
+      <a
+        href={href}
+        className={commonClasses}
+        onClick={(e) => {
+          e.preventDefault();
+          const id = href.replace('#', '');
+          scrollToElementById(id);
+        }}
+        {...(rest as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
+      >
+        {content}
+      </a>
+    );
+  }
 
   if (href) {
     return (

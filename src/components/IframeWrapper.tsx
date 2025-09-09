@@ -6,9 +6,10 @@ interface IframeWrapperProps {
   head?: React.ReactNode;
   className?: string;
   style?: React.CSSProperties;
+  onReady?: (doc: Document) => void;
 }
 
-const IframeWrapper: React.FC<IframeWrapperProps> = ({ children, head, className, style }) => {
+const IframeWrapper: React.FC<IframeWrapperProps> = ({ children, head, className, style, onReady }) => {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [iframeHead, setIframeHead] = useState<HTMLElement | null>(null);
   const [iframeBody, setIframeBody] = useState<HTMLElement | null>(null);
@@ -25,6 +26,20 @@ const IframeWrapper: React.FC<IframeWrapperProps> = ({ children, head, className
         setIframeHead(doc.head);
         setIframeBody(doc.body);
         clearInterval(interval);
+
+        const script = doc.createElement('script');
+        script.innerHTML = `
+          document.addEventListener('click', function(e) {
+            const a = e.target.closest('a');
+            if (a && a.tagName === 'A') {
+              e.preventDefault();
+              e.stopPropagation();
+            }
+          });
+        `;
+        doc.body.appendChild(script);
+
+        if (onReady) onReady(doc);
       }
     }, 10);
 

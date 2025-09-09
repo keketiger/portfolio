@@ -32,6 +32,27 @@ const UnionDarkRP = () => {
           <link href="./projets/union-darkrp/style.css" rel="stylesheet" />
         </>
       }
+      onReady={(doc) => {
+        const loadScript = (src: string) => {
+          return new Promise<void>((resolve, reject) => {
+            const script = doc.createElement('script');
+            script.src = src;
+            script.async = false;
+            script.onload = () => resolve();
+            script.onerror = () => reject();
+            doc.head.appendChild(script);
+          });
+        };
+
+        loadScript("https://code.jquery.com/jquery-3.5.1.slim.min.js")
+          .then(() => loadScript("https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"))
+          .then(() => loadScript("https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"))
+          .then(() => {
+            const initScript = doc.createElement('script');
+            initScript.innerHTML = `$('#carouselGallery').carousel({ interval: 5000 });`;
+            doc.body.appendChild(initScript);
+          })
+      }}
     >
       <nav className="fixed-top navbar navbar-expand-lg">
         <div className="container">
@@ -50,7 +71,7 @@ const UnionDarkRP = () => {
           <div className="collapse navbar-collapse" id="navbarNavDropdown">
             <ul className="ml-auto navbar-nav">
               <li className="nav-item">
-                <a className="nav-link" href="#">Forum</a>
+                <a className="nav-link" href="#/projets/union-darkrp/forum">Forum</a>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="https://discord.gg/QUeQFwd" target="_blank">Discord</a>
@@ -59,7 +80,7 @@ const UnionDarkRP = () => {
                 <a className="nav-link" href="https://steamcommunity.com/sharedfiles/filedetails/?id=2162992855" target="_blank">Workshop</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">Boutique</a>
+                <a className="nav-link" href="#/projets/union-darkrp/shop">Boutique</a>
               </li>
             </ul>
           </div>
@@ -152,7 +173,6 @@ const UnionDarkRP = () => {
               </div>
             </div>
             <iframe
-              allowTransparency
               frameBorder="0"
               height="500"
               sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
@@ -174,7 +194,7 @@ const UnionDarkRP = () => {
             <div className="col-md-4">
               <ul className="text-white">
                 <li>
-                  <a href="/forum/">Forum</a>
+                  <a href="#/projets/union-darkrp/forum">Forum</a>
                 </li>
                 <li>
                   <a href="https://discord.gg/QUeQFwd" target="_blank">Discord</a>
@@ -183,7 +203,7 @@ const UnionDarkRP = () => {
                   <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2162992855" target="_blank">Workshop</a>
                 </li>
                 <li>
-                  <a href="#">Boutique</a>
+                  <a href="#/projets/union-darkrp/shop">Boutique</a>
                 </li>
               </ul>
             </div>
@@ -194,17 +214,13 @@ const UnionDarkRP = () => {
             <div className="row">
               <div className="col-md-12">
                 <div className="text-center">
-                  <a href="#">© 2020 Union Dark RP</a>
+                  <a href="#/projets/union-darkrp/">© 2020 Union Dark RP</a>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </footer>
-
-      <script crossOrigin="anonymous" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-      <script crossOrigin="anonymous" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-      <script crossOrigin="anonymous" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </PagePreviewLayout>
   );
 }

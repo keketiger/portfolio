@@ -4,6 +4,7 @@ import Button from '../components/elements/Button';
 import Card from '../components/elements/Card';
 import { useCarousel } from '../context/Carousel';
 import ImgCarousel from '../components/ImgCarousel';
+import ScrollLink from '../components/elements/ScrollLink';
 import { Download, Globe, Image, Info, Mail, Phone } from 'lucide-react';
 import Github from '../assets/icons/github.svg';
 import LinkedIn from '../assets/icons/linkedin.svg';
@@ -61,9 +62,9 @@ function Home() {
         <header className='p-6 bg-white shadow-md flex flex-col md:flex-row justify-between items-center'>
           <h1 className='text-2xl font-bold'>Portfolio de Kevin FORT</h1>
           <nav className='space-x-4'>
-            <a href='#competences' className='hover:text-blue-600'>Compétences</a>
-            <a href='#projets' className='hover:text-blue-600'>Projets</a>
-            <a href='#contact' className='hover:text-blue-600'>Contact</a>
+            <ScrollLink targetId='competences' className='hover:text-blue-600'>Compétences</ScrollLink>
+            <ScrollLink targetId='projets' className='hover:text-blue-600'>Projets</ScrollLink>
+            <ScrollLink targetId='contact' className='hover:text-blue-600'>Contact</ScrollLink>
           </nav>
         </header>
 
@@ -90,7 +91,7 @@ function Home() {
               Passionné d'informatique depuis toujours, spécialisé en systèmes, réseaux, virtualisation et développement web.
             </p>
             <div className='flex flex-col md:flex-row gap-4 mt-6'>
-              <Button href='/cv.pdf' download iconLeft={<Download />}>Télécharger CV</Button>
+              <Button href='./kevin_fort_cv.pdf' target='_blank' iconLeft={<Download />}>Télécharger CV</Button>
               <Button href='#contact' iconLeft={<Mail />}>Me contacter</Button>
             </div>
           </div>
@@ -204,7 +205,7 @@ function Home() {
                 </p>
               }
               buttons={
-                <Button href='#/projets/union-darkrp' iconLeft={<Info />}>Prévisualiser</Button>
+                <Button to='/projets/union-darkrp' iconLeft={<Info />}>Prévisualiser</Button>
               }
             />
             <ProjectCard
