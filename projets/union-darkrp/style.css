@@ -156,7 +156,7 @@ main.error .error-404 .content-404 .return i {
 }
 section.header {
   width: 100%;
-  background: #3d4148 url(/projets/union-darkrp/header_background.jpg) no-repeat fixed
+  background: #3d4148 url(./header_background.jpg) no-repeat fixed
     center;
   background-position-y: -22rem;
   min-height: 500px;
