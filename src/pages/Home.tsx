@@ -97,6 +97,30 @@ function Home() {
           </div>
         </section>
 
+        <MotionSection id='about' className='py-16 px-6 bg-gray-50'>
+          <h3 className='text-2xl font-bold text-center mb-10 uppercase'>À propos de moi</h3>
+          <div className='max-w-7xl mx-auto text-gray-800 leading-relaxed space-y-4'>
+            <p>
+              Ma passion pour l'informatique a débuté très tôt. Dès l'âge de 10 ans, je jouais à Minecraft sur PC et j'ai rapidement voulu aller plus loin que le simple gameplay. C'est ainsi que j'ai découvert le monde du développement, en créant mes premiers plugins et mods en Java. Cette expérience m'a appris à chercher l'information efficacement, que ce soit via des forums, YouTube ou la documentation officielle.
+            </p>
+            <p>
+              J'ai ensuite développé plusieurs serveurs Minecraft, allant des mini-jeux à des modes de survie plus avancés, jusqu’à des serveurs interconnectés grâce à des proxys. En parallèle, je me suis intéressé aux sites web, en décortiquant le code source de sites existants pour comprendre leur fonctionnement en HTML, CSS et JavaScript.
+            </p>
+            <p>
+              Mon apprentissage s'est enrichi avec de nouveaux langages et frameworks : Lua, C#, React, Vue.js... notamment via le développement de mods et de scripts pour différents jeux. J'ai ensuite découvert le développement de jeux avec Unreal Engine 4 et la modélisation 3D avec Blender, ce qui m’a permis de réaliser plusieurs petits jeux expérimentaux.
+            </p>
+            <p>
+              Plus tard, j’ai voulu créer une application simple et utile. J’ai donc développé <strong>TigerRadio</strong>, une application de lecture de flux radio en <strong>WPF</strong>, légère et agréable à utiliser. Ce projet m’a permis de combiner mes compétences en développement logiciel avec une vraie attention portée au design.
+            </p>
+            <p>
+              Aujourd'hui, je suis également actif au sein d'une communauté de jeu vidéo appelée <strong>Altrada</strong>, que j’ai cofondée. J’y gère le développement web (React + Next.js), l’ajout de contenu sur notre serveur GTA RP (FiveM), ainsi que l’intégration d’interfaces performantes et immersives.
+            </p>
+            <p>
+              Mon parcours est guidé par la curiosité, l'envie d’apprendre et le plaisir de créer des projets concrets, utiles, et parfois même un peu fous !
+            </p>
+          </div>
+        </MotionSection>
+
         <MotionSection id='competences' className='py-16 px-6 bg-white'>
           <h3 className='text-2xl font-bold text-center mb-10 uppercase'>Compétences</h3>
           <div className='grid justify-center md:grid-cols-3 gap-6 max-w-7xl mx-auto'>
