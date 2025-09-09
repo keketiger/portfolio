@@ -24,7 +24,7 @@ const PagePreviewLayout: React.FC<LayoutProps> = ({ title, description, headCont
       <div className='min-h-screen flex flex-col'>
         <header className='bg-sky-900 text-white p-4'>
           <div className='flex items-center gap-5'>
-            <Button href='/' iconLeft={<ChevronLeft />}>
+            <Button to='/' iconLeft={<ChevronLeft />}>
               Retour au portfolio
             </Button>
             <h1 className='text-xl font-bold'>Prévisualisation: {title}</h1>
