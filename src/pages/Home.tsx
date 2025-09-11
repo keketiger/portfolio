@@ -79,7 +79,7 @@ function Home() {
 
           <div className='z-1 flex flex-col items-center justify-center py-20 px-6 text-center'>
             <motion.img
-              src='https://avatars.githubusercontent.com/u/34973659?v=4'
+              src='./profil.webp'
               alt='Photo de profil'
               className='size-32 rounded-full border-4 border-blue-500 mb-4'
               initial={{ scale: 0 }}
