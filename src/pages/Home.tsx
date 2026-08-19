@@ -1,325 +1,283 @@
 import { motion } from 'framer-motion';
 import { MotionSection } from '../components/elements/Motion';
 import Button from '../components/elements/Button';
-import Card from '../components/elements/Card';
-import { useCarousel } from '../context/Carousel';
-import ImgCarousel from '../components/ImgCarousel';
-import ScrollLink from '../components/elements/ScrollLink';
-import { Download, Globe, Image, Info, Mail, Phone } from 'lucide-react';
+// import Card from '../components/elements/Card';
+// import { useCarousel } from '../context/Carousel';
+// import ImgCarousel from '../components/ImgCarousel';
+// import ScrollLink from '../components/elements/ScrollLink';
+import TextIcon from '../components/elements/TextIcon';
+import ActionButton from '../components/elements/ActionButton';
+import { BriefcaseBusiness, Circle, Clock, Code, FileText, Mail, MapPin, Menu, SquareArrowDown, SquareArrowUp } from 'lucide-react';
 import Github from '../assets/icons/github.svg';
 import LinkedIn from '../assets/icons/linkedin.svg';
+import Wave from '../assets/icons/wave.svg';
+import WaveAnimate from '../assets/waves-animate.svg?react';
+import Illustation from '../assets/illustration.webp';
+import IconSvg from '../components/elements/IconSvg';
+import { useState } from 'react';
+import clsx from 'clsx';
+import { scrollToElementById } from '../utils/helper';
+import projects from '../config/projects';
+import { languages, tools } from '../config/skills';
+import ProjectCard from '../components/ProjectCard';
 
 function Home() {
-  const { openCarousel } = useCarousel();
+  const [sideMenuState, setSideMenuState] = useState(false);
+  const [navMenuState, setNavMenuState] = useState(false);
 
-  const tigerRadioImages = [
-    './projets/tiger-radio/preview1.webp',
-    './projets/tiger-radio/preview2.webp'
-  ];
+  // const { openCarousel } = useCarousel();
 
-  const ProjectCard = ({
-    title,
-    desc,
-    logo,
-    logoRounded,
-    content,
-    buttons
-  }: {
-    title: string;
-    desc: React.ReactNode;
-    logo?: string;
-    logoRounded?: boolean;
-    content: React.ReactNode;
-    buttons?: React.ReactNode;
-  }) => {
-    return (
-      <Card className='!max-w-full'>
-        <div className='flex flex-col md:flex-row gap-4'>
-          <div>
-            <h4 className='text-xl font-bold'>{title}</h4>
-            <small className='text-gray-300'>{desc}</small>
-            <div className={`my-3 ${logo && 'pr-15'}`}>{content}</div>
-            <div className='mt-5 space-x-4 space-y-4 md:space-y-0'>{buttons}</div>
-          </div>
-          {logo && (
-            <motion.img
-              src={logo}
-              alt={`Logo ${title}`}
-              className={`size-32 ${logoRounded && 'rounded-full'}`}
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ duration: 0.5 }}
-            />
-          )}
-        </div>
-      </Card>
-    );
+  // const tigerRadioImages = [
+  //   './projets/tiger-radio/preview1.webp',
+  //   './projets/tiger-radio/preview2.webp'
+  // ];
+
+  const handleSideMenuBtn = () => {
+    setSideMenuState(!sideMenuState);
+    if (!sideMenuState) scrollToElementById('left-side');
   };
 
   return (
     <>
-      <div className='min-h-screen bg-gray-50 text-gray-800'>
-        <header className='p-6 bg-white shadow-md flex flex-col md:flex-row justify-between items-center'>
-          <h1 className='text-2xl font-bold'>Portfolio de Kevin FORT</h1>
-          <nav className='space-x-4'>
-            <ScrollLink targetId='competences' className='hover:text-blue-600'>Compétences</ScrollLink>
-            <ScrollLink targetId='projets' className='hover:text-blue-600'>Projets</ScrollLink>
-            <ScrollLink targetId='contact' className='hover:text-blue-600'>Contact</ScrollLink>
-          </nav>
-        </header>
+      <div className='min-h-screen bg-linear-to-b from-sky-200 to-white p-5 text-gray-800'>
+        <div className='flex flex-col lg:flex-row mx-auto max-w-7xl rounded-xl bg-white'>
+          <aside id='left-side'
+            className={clsx(
+              'hidden lg:flex flex-col justify-between w-full lg:max-w-xs overflow-hidden rounded-md shadow-xl',
+              { '!flex bg-sky-100/50 backdrop-blur-md': sideMenuState }
+            )}
+          >
+            <div className='p-5'>
+              <div className='flex flex-col items-center gap-2 select-none'>
+                <motion.img
+                  src='./profil.webp'
+                  alt='Photo de profil'
+                  className='size-40 rounded-full mb-4'
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ duration: 0.5 }}
+                  draggable={false}
+                />
+                <h2 className='text-3xl font-bold text-shadow-md'>Kevin FORT</h2>
+                <TextIcon
+                  text="Développeur d'application & Web"
+                  className='font-medium'
+                  icon={Code}
+                  pos='right'
+                />
+                <p className='mt-2.5 text-center text-sm px-5'>
+                  Je crée des expériences web modernes, rapides et accessibles.
+                </p>
+                <img src={Wave} alt='Wave divider' className='size-20' draggable={false} />
+              </div>
 
-        <section className='relative flex flex-col items-center justify-center'>
-          <div
-            className='absolute bottom-0 left-0 w-full h-full z-0'
-            style={{
-              background: "url('./assets/layered-wave.svg') no-repeat center bottom",
-              backgroundSize: 'cover'
-            }}
-          />
+              <h4 className='font-bold uppercase text-sm mb-3'>Contact</h4>
+              <div className='space-y-4 ml-4'>
+                <a href='mailto:kevinfort000@gmail.com' className='block'>
+                  <TextIcon
+                    text="kevinfort000@gmail.com"
+                    className='font-medium'
+                    icon={Mail}
+                    iconClass='size-6 text-sky-600'
+                    pos='left'
+                  />
+                </a>
+                <TextIcon
+                  text="Agde, France"
+                  className='font-medium'
+                  icon={MapPin}
+                  iconClass='size-6 text-sky-600'
+                  pos='left'
+                />
+              </div>
 
-          <div className='z-1 flex flex-col items-center justify-center py-20 px-6 text-center'>
-            <motion.img
-              src='./profil.webp'
-              alt='Photo de profil'
-              className='size-32 rounded-full border-4 border-blue-500 mb-4'
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ duration: 0.5 }}
-            />
-            <h2 className='text-3xl font-bold text-shadow-md'>Développeur / Technicien Supérieur Systèmes & Réseaux</h2>
-            <p className='text-gray-800 2xl:text-gray-100 text-shadow-md max-w-xl mt-4'>
-              Passionné d'informatique depuis toujours, spécialisé en systèmes, réseaux, virtualisation et développement web.
-            </p>
-            <div className='flex flex-col md:flex-row gap-4 mt-6'>
-              <Button href='./kevin_fort_cv.pdf' target='_blank' iconLeft={<Download />}>Télécharger CV</Button>
-              <Button href='#contact' iconLeft={<Mail />}>Me contacter</Button>
+              <img src={Wave} alt='Wave divider' className='size-20 mx-auto select-none' draggable={false} />
+
+              <h4 className='font-bold uppercase text-sm mb-3'>Liens</h4>
+              <div className='space-y-4'>
+                <ActionButton
+                  icon={<img src={LinkedIn} alt='Logo LinkedIn' className='size-7' draggable={false} />}
+                  title='LinkedIn'
+                  description='linkedin.com/in/fort-kevin'
+                  href='https://www.linkedin.com/in/fort-kevin/'
+                />
+
+                <ActionButton
+                  icon={<img src={Github} alt='Logo Github' className='size-7' draggable={false} />}
+                  title='GitHub'
+                  description='github.com/keketiger'
+                  href='https://github.com/keketiger'
+                />
+
+                <ActionButton
+                  icon={<FileText className="h-6 w-6 text-blue-500" />}
+                  title='Mon CV'
+                  description='Télécharger le PDF'
+                  downloadFile='./kevin_fort_cv.pdf'
+                />
+              </div>
             </div>
-          </div>
-        </section>
 
-        <MotionSection id='about' className='py-16 px-6 bg-gray-50'>
-          <h3 className='text-2xl font-bold text-center mb-10 uppercase'>À propos de moi</h3>
-          <div className='max-w-7xl mx-auto text-gray-800 leading-relaxed space-y-4'>
-            <p>
-              Ma passion pour l'informatique a débuté très tôt. Dès l'âge de 10 ans, je jouais à Minecraft sur PC et j'ai rapidement voulu aller plus loin que le simple gameplay. C'est ainsi que j'ai découvert le monde du développement, en créant mes premiers plugins et mods en Java. Cette expérience m'a appris à chercher l'information efficacement, que ce soit via des forums, YouTube ou la documentation officielle.
-            </p>
-            <p>
-              J'ai ensuite développé plusieurs serveurs Minecraft, allant des mini-jeux à des modes de survie plus avancés, jusqu’à des serveurs interconnectés grâce à des proxys. En parallèle, je me suis intéressé aux sites web, en décortiquant le code source de sites existants pour comprendre leur fonctionnement en HTML, CSS et JavaScript.
-            </p>
-            <p>
-              Mon apprentissage s'est enrichi avec de nouveaux langages et frameworks : Lua, C#, React, Vue.js... notamment via le développement de mods et de scripts pour différents jeux. J'ai ensuite découvert le développement de jeux avec Unreal Engine 4 et la modélisation 3D avec Blender, ce qui m’a permis de réaliser plusieurs petits jeux expérimentaux.
-            </p>
-            <p>
-              Plus tard, j’ai voulu créer une application simple et utile. J’ai donc développé <strong>TigerRadio</strong>, une application de lecture de flux radio en <strong>WPF</strong>, légère et agréable à utiliser. Ce projet m’a permis de combiner mes compétences en développement logiciel avec une vraie attention portée au design.
-            </p>
-            <p>
-              Aujourd'hui, je suis également actif au sein d'une communauté de jeu vidéo appelée <strong>Altrada</strong>, que j’ai cofondée. J’y gère le développement web (React + Next.js), l’ajout de contenu sur notre serveur GTA RP (FiveM), ainsi que l’intégration d’interfaces performantes et immersives.
-            </p>
-            <p>
-              Mon parcours est guidé par la curiosité, l'envie d’apprendre et le plaisir de créer des projets concrets, utiles, et parfois même un peu fous !
-            </p>
-          </div>
-        </MotionSection>
+            <div className='w-full'>
+              <WaveAnimate className='block' />
+            </div>
+          </aside>
 
-        <MotionSection id='competences' className='py-16 px-6 bg-white'>
-          <h3 className='text-2xl font-bold text-center mb-10 uppercase'>Compétences</h3>
-          <div className='grid justify-center md:grid-cols-3 gap-6 max-w-7xl mx-auto'>
-            <Card>
-              <h4 className='text-lg font-semibold mb-2'>Systèmes & Réseaux</h4>
-              <p className='text-gray-300'>Windows, Linux (Debian, Ubuntu), Virtualisation (VMware, Hyper-V, VirtualBox, Docker), Sécurité réseau (VPN, pare-feu).</p>
-            </Card>
-            <Card variant='secondary'>
-              <h4 className='text-lg font-semibold mb-2'>Développement</h4>
-              <p className='text-gray-300'>Python, Java, .NET, PHP, React, Bash, PowerShell, SQL, HTML/CSS/JS, Typescript, Lua, Json, XML, YAML.</p>
-            </Card>
-            <Card>
-              <h4 className='text-lg font-semibold mb-2'>Outils</h4>
-              <p className='text-gray-300'>Git/GitHub, VS Code, Photoshop, Blender, Unreal Engine, VirtualBox, MobXterm, WinSCP/FileZilla.</p>
-            </Card>
-          </div>
-        </MotionSection>
+          <main className='w-full py-5 px-8 space-y-5'>
+            <div className='space-x-3'>
+              <div
+                className='inline-block lg:hidden w-fit p-2 rounded-full border-1 border-sky-300'
+                onClick={handleSideMenuBtn}
+              >
+                {sideMenuState ? <SquareArrowDown /> : <SquareArrowUp />}
+              </div>
+              <div
+                className='inline-block lg:hidden w-fit p-2 rounded-full border-1 border-sky-300'
+                onClick={() => setNavMenuState(!navMenuState)}
+              >
+                <Menu />
+              </div>
+            </div>
 
-        <MotionSection id='projets' className='py-16 px-6 bg-gray-50'>
-          <h3 className='text-2xl font-bold text-center mb-10 uppercase'>Projets</h3>
-          <div className='max-w-7xl mx-auto space-y-6'>
-            <ProjectCard
-              title='La Cabane Informatique – Société de services informatiques'
-              desc={<i>Développeur Web - Depuis <time dateTime='2025'>2025</time></i>}
-              logo='./projets/lacabaneinformatique/logo.webp'
-              content={
-                <p>
-                  La Cabane Informatique est une jeune société de services informatiques destinée aussi bien aux professionnels qu'aux particuliers. Elle propose des prestations variées : interventions rapides, conception et montage de PC sur mesure, réparations à domicile et maintenance de matériel informatique.
-                  <br />
-                  <br />
-                  J'ai conçu le site internet en FullStack, en respectant une maquette fournie par le PDG. J'ai également apporté des conseils pour optimiser l'interface et améliorer l'expérience utilisateur. J'ai accompagné le PDG dans le choix de l'hébergement web et la définition de ses besoins techniques.
-                  <br />
-                  <br />
-                  Sur le plan technique, le site a été développé avec <b>React</b>, <b>TypeScript</b>, <b>Next.js</b> et <b>MariaDB</b>. La base de données permet une gestion simple et rapide des tarifs et des services proposés.
-                </p>
-              }
-              buttons={
-                <>
-                  <Button href='https://lacabaneinformatique.fr/' target='_blank' rel='noopener noreferrer' iconLeft={<Globe />}>Site Internet</Button>
-                  <Button href='tel:0952343769' iconLeft={<Phone />}>09 52 34 37 69</Button>
-                </>
-              }
-            />
-            <ProjectCard
-              title='TigerRadio – Application Radio légère'
-              desc={<i>Développeur – Depuis <time dateTime='2022'>2022</time></i>}
-              logo='./projets/tiger-radio/logo.webp'
-              content={
-                <p>
-                  TigerRadio est ma toute première application développée en <b>WPF</b>, conçue en 2022. Ce projet m'a permis de découvrir et de pratiquer le développement en <b>.NET Framework 4.8</b>.
-                  <br />
-                  <br />
-                  Mon objectif était de créer une application légère, rapide et simple d'utilisation, permettant d'écouter facilement des flux radios français et internationaux. L'application propose actuellement une trentaine de radios accessibles en un clic.
-                  <br />
-                  <br />
-                  J'ai également intégré une section permettant de lire les fichiers audio présents dans le dossier Musique de Windows.
-                  <br />
-                  <br />
-                  Ce projet m'a permis de travailler avec les langages et technologies suivants : <b>C#</b> et <b>WPF/XAML</b>.
-                </p>
-              }
-              buttons={
-                <Button onClick={() => openCarousel(0)} iconLeft={<Image />}>Voir les images</Button>
-              }
-            />
-            <ProjectCard
-              title='Altrada – Communauté de joueurs'
-              desc={<i>Fondateur & Développeur principal - Depuis <time dateTime='2021'>2021</time></i>}
-              logo='https://altrada.net/images/altrada_logo_ts.png'
-              content={
-                <p>
-                  Fondée en 2021, Altrada est une communauté de joueurs passionnés que j'ai cofondée avec quatre amis. Nous organisons régulièrement des sessions de jeu variées, et nous gérons également un serveur FiveM dédié au rôleplay sur <i>Grand Theft Auto V</i>.
-                  <br />
-                  <br />
-                  Je suis responsable du développement technique, du maquettage graphique (notamment via Photoshop, Figma, Canva), ainsi que de l'étude et de l'intégration de nouvelles fonctionnalités.
-                  <br />
-                  <br />
-                  Je travaille activement sur le site internet de la communauté ainsi que sur le serveur FiveM, principalement avec les technologies suivantes : <b>React</b>, <b>TypeScript</b>, <b>Vite.js</b>, <b>CSS</b>, <b>Next.js</b>, <b>Lua</b>, <b>JSON</b>, <b>SQL</b> et <b>XML</b>.
-                  <br />
-                  <br />
-                  Je réalise également de la modélisation 3D avec <b>Blender</b>, afin de créer ou modifier des bâtiments et des éléments de décor personnalisés pour enrichir l'univers de jeu sur <i>Grand Theft Auto V</i>.
-                </p>
-              }
-              buttons={
-                <>
-                  <Button href='https://altrada.net/' target='_blank' rel='noopener noreferrer' iconLeft={<Globe />}>Site Internet</Button>
-                  <Button href='/portfolio/projets/altrada' iconLeft={<Info />}>En savoir plus</Button>
-                </>
-              }
-            />
-            <ProjectCard
-              title="Union DarkRP – Serveur Garry's Mod Roleplay"
-              desc={<i>Développeur Web – <time dateTime='2020'>2020</time></i>}
-              logo='./projets/union-darkrp/logo.webp'
-              logoRounded
-              content={
-                <p>
-                  J'ai conçu et déployé le <b>site internet</b> pour le serveur <i>Union DarkRP</i>, un serveur <i>Garry's Mod</i> orienté roleplay. Le site incluait un <b>forum communautaire</b> basé sur <b>MyBB</b>, un CMS open source, entièrement installé et configuré par mes soins.
-                  <br />
-                  <br />
-                  J'ai également mis en place une <b>boutique en ligne</b>, connectée au serveur de jeu via un plugin tiers spécifique à <i>Garry's Mod</i>. L'ensemble de l'infrastructure web était hébergé sur un serveur <b>Debian</b> avec un stack <b>LEMP</b> : <b>Linux</b>, <b>Nginx</b>, <b>MariaDB</b> et <b>PHP</b>.
-                  <br />
-                  <br />
-                  Langages utilisés : <b>PHP</b>, <b>SQL</b>, <b>JSON</b>, <b>HTML</b>, <b>CSS</b>, <b>JavaScript</b>.<br />
-                  Logiciel utilisé : <b>Visual Studio Code</b>.
-                </p>
-              }
-              buttons={
-                <Button to='/projets/union-darkrp' iconLeft={<Info />}>Prévisualiser</Button>
-              }
-            />
-            <ProjectCard
-              title='Oroka – Serveur FiveM'
-              desc={<i>Développeur & Créateur de contenu – De <time dateTime='2019'>2019</time> à <time dateTime='2021'>2021</time></i>}
-              logo='./projets/oroka/logo.webp'
-              content={
-                <p>
-                  Oroka était un serveur <i>FiveM</i> sur lequel j'ai été responsable du développement, de la création de contenu personnalisé, ainsi que de l'optimisation des scripts et de l'environnement de jeu.
-                  <br />
-                  <br />
-                  J'ai utilisé <b>Blender</b> pour corriger et modifier certains bâtiments en 3D, en intégrant ces modifications dans l'univers du serveur. J'ai également développé et configuré un <b>site web</b> ainsi qu'un <b>forum XenForo</b> pour la communauté.
-                  <br />
-                  <br />
-                  J'ai occasionnellement contribué à la <b>création graphique</b>, notamment en réalisant le dernier logo du projet.
-                  <br />
-                  <br />
-                  Technologies & langages utilisés : <b>Lua</b>, <b>HTML</b>, <b>CSS</b>, <b>JavaScript</b>, <b>PHP</b>, <b>JSON</b>, <b>SQL</b>.
-                  <br />
-                  Environnements de travail : <b>Visual Studio Code</b>, <b>Blender</b>, <b>HeidiSQL</b>.
-                </p>
-              }
-            />
-            <ProjectCard
-              title="CrossRP – Serveur Garry's Mod Roleplay"
-              desc={<i>Développeur & Modérateur – De <time dateTime='2017'>2017</time> à <time dateTime='2018'>2018</time></i>}
-              logo='./projets/crossrp/logo.webp'
-              logoRounded
-              content={
-                <p>
-                  CrossRP était un serveur <i>Garry's Mod</i> orienté <b>jeu de rôle</b>, développé en collaboration avec un ami. Le serveur proposait différents métiers et activités immersives permettant aux joueurs de s'immerger dans un univers RP structuré.
-                  <br />
-                  <br />
-                  J'étais en charge de la création des scripts en <b>Lua</b> pour chaque métier et de la configuration complète de l'environnement serveur. J'ai installé et maintenu le serveur sur une machine tournant sous <b>Debian 7</b> avec une base de données <b>MySQL</b>.
-                  <br />
-                  <br />
-                  En plus du développement, je gérais également la <b>modération</b> du serveur, assurant le respect des règles et une bonne ambiance entre les joueurs.
-                  <br />
-                  <br />
-                  Technologies & langages utilisés : <b>Lua</b>, <b>MySQL</b>.<br />
-                  Environnements : <b>Debian 7</b>.
-                </p>
-              }
-            />
-            <ProjectCard
-              title='IceLand – Serveur Minecraft multi-jeux'
-              desc={<i>Développeur & Administrateur – De <time dateTime='2017'>2017</time> à <time dateTime='2019'>2019</time></i>}
-              content={
-                <>
+            <nav>
+              <ul
+                className={clsx(
+                  'hidden lg:flex flex-col lg:flex-row justify-end gap-2 lg:gap-5',
+                  { '!flex': navMenuState }
+                )}
+              >
+                <li>
+                  <Button className='text-xs !py-2' href='/'>Accueil</Button>
+                </li>
+                <li>
+                  <Button className='text-xs !py-2' href='#about'>À propos</Button>
+                </li>
+                <li>
+                  <Button className='text-xs !py-2' href="#skills">Compétences</Button>
+                </li>
+                <li>
+                  <Button className='text-xs !py-2' href="#projects">Projets</Button>
+                </li>
+                <li>
+                  <Button className='text-xs !py-2' href="#">Contact</Button>
+                </li>
+              </ul>
+            </nav>
+
+            <div className='space-y-8'>
+              <MotionSection id='about' className='flex gap-5 select-none'>
+                <div>
+                  <TextIcon
+                    text='À propos de moi'
+                    className='font-bold uppercase text-xs'
+                    icon={Circle}
+                    iconClass='fill-sky-400 text-sky-400 size-3'
+                    pos='left'
+                  />
+
+                  <h2 className='text-2xl font-bold my-2'>
+                    Salut, moi c'est <span className='text-blue-700'>Kevin</span> !
+                  </h2>
+
                   <p>
-                    IceLand était un serveur <i>Minecraft</i> multi-jeux composé de plusieurs serveurs interconnectés via un proxy. Ce système permettait aux joueurs de naviguer entre les différents modes sans avoir à changer manuellement d'adresse IP.
+                    Développeur passionné par la création de solutions web utiles, esthétiques et performantes. J'aime transformer des idées en projets concrets.
                     <br />
                     <br />
-                    Le projet proposait plusieurs expériences de jeu :
+                    Curieux, autonome et rigoureux, je suis toujours à la recherche de nouveaux défis pour apprendre et progresser.
                   </p>
-                  <ul className='list-disc list-inside mt-2'>
-                    <li>Un mode survie classique</li>
-                    <li>Un mode survie avec ressources x2 et PVP activé</li>
-                    <li>Un mode <i>Skyblock</i>, où le joueur commence sur une île minuscule à agrandir</li>
-                  </ul>
-                  <p>
-                    <br />
-                    Je me suis occupé du développement et de la configuration des plugins, ainsi que de la mise en place complète de l'architecture des serveurs sous <b>Debian 7</b> avec <b>MySQL</b> administré via <b>phpMyAdmin</b>.
-                    <br />
-                    <br />
-                    Technologies & langages utilisés : <b>Java</b>, <b>YAML</b>, <b>JSON</b>.
-                    <br />
-                    Logiciels utilisés : <b>Eclipse IDE</b>, <b>Notepad++</b>.
-                  </p>
-                </>
-              }
-            />
-          </div>
-        </MotionSection>
 
-        <MotionSection id='contact' className='py-16 px-6 bg-white text-center'>
-          <h3 className='text-2xl font-bold mb-6 uppercase'>Contact</h3>
-          <Button href='mailto:kevinfort000@gmail.com' iconLeft={<Mail />} className='!text-blue-200'>kevinfort000@gmail.com</Button>
-          <div className='flex justify-center gap-6 mt-5'>
-            <Button href='https://github.com/keketiger' target='_blank' rel='noopener noreferrer'><img src={Github} alt='Logo Github' className='size-6' /></Button>
-            <Button href='https://www.linkedin.com/in/fort-kevin/' target='_blank' rel='noopener noreferrer'><img src={LinkedIn} alt='Logo LinkedIn' className='size-6' /></Button>
-          </div>
-        </MotionSection>
+                  <div className='space-x-3 space-y-3 mt-5'>
+                    <div className='inline-flex gap-3 p-3 shadow-lg border border-gray-200 rounded-lg'>
+                      <Clock className='text-blue-500' />
+                      <div>
+                        <h4 className='text-sm text-gray-600 font-medium mb-1'>Disponibilité</h4>
+                        <TextIcon
+                          text='Disponible'
+                          className='font-bold text-[0.85rem] leading-5'
+                          icon={Circle}
+                          iconClass='fill-green-500 text-green-500 size-2.5'
+                          pos='left'
+                        />
+                      </div>
+                    </div>
 
-        <footer className='p-6 text-center text-gray-500 text-sm'>
-          <p>© {new Date().getFullYear()} Portfolio de Kevin Fort. Tous droits réservés.</p>
-        </footer>
+                    <div className='inline-flex gap-3 p-3 shadow-lg border border-gray-200 rounded-lg'>
+                      <BriefcaseBusiness className='text-blue-500' />
+                      <div>
+                        <h4 className='text-sm text-gray-600 font-medium mb-1'>Expérience</h4>
+                        <p className='font-bold text-[0.85rem] leading-5'>5+ ans</p>
+                      </div>
+                    </div>
+
+                    <div className='inline-flex gap-2 p-3 shadow-lg border border-gray-200 rounded-lg'>
+                      <MapPin className='text-blue-500' />
+                      <div>
+                        <h4 className='text-sm text-gray-600 font-medium mb-1'>Localisation</h4>
+                        <p className='font-bold text-[0.85rem] leading-5'>Agde, France</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className='hidden lg:block w-[90%]'>
+                  <img src={Illustation} alt='Illustation développement' draggable={false} />
+                </div>
+              </MotionSection>
+
+              <MotionSection id='skills' className='select-none space-y-5'>
+                <TextIcon
+                  text='Mes compétences'
+                  className='font-bold uppercase text-xs'
+                  icon={Circle}
+                  iconClass='fill-sky-400 text-sky-400 size-3'
+                  pos='left'
+                />
+
+                <h4 className='font-bold text-xs'>Langages & Frameworks</h4>
+                <div className='space-x-3 space-y-3'>
+                  {languages.map((item, i) => (
+                    <div key={i} className='inline-flex items-center gap-3 p-3 shadow-lg border border-gray-200 rounded-lg'>
+                      <IconSvg icon={item.icon} size={24} />
+                      <h4 className='text-sm text-gray-600 font-medium mb-1'>{item.label}</h4>
+                    </div>
+                  ))}
+                </div>
+
+                <h4 className='font-bold text-xs'>Outils & Technologies</h4>
+                <div className='space-x-3 space-y-3'>
+                  {tools.map((item, i) => (
+                    <div key={i} className='inline-flex items-center gap-3 p-3 shadow-lg border border-gray-200 rounded-lg'>
+                      {item.icon && <IconSvg icon={item.icon} size={24} />}
+                      {item.svg && <img src={item.svg} alt={item.label} className='size-6' draggable={false} />}
+                      <h4 className='text-sm text-gray-600 font-medium mb-1'>{item.label}</h4>
+                    </div>
+                  ))}
+                </div>
+              </MotionSection>
+
+              <MotionSection id='projects' className='select-none mt-2'>
+                <TextIcon
+                  text='Mes projets'
+                  className='font-bold uppercase text-xs'
+                  icon={Circle}
+                  iconClass='fill-sky-400 text-sky-400 size-3'
+                  pos='left'
+                />
+
+                <div className='mt-5 space-y-3'>
+                  {projects.map((item, i) => <ProjectCard key={i} {...item} />)}
+                </div>
+              </MotionSection>
+            </div>
+
+            <footer className='px-6 text-center text-gray-500 text-sm select-none'>
+              <p>© {new Date().getFullYear()} Kevin Fort - Tous droits réservés.</p>
+            </footer>
+          </main>
+        </div>
       </div>
 
-      <ImgCarousel images={tigerRadioImages} />
+      {/* <ImgCarousel images={tigerRadioImages} /> */}
     </>
   );
 };

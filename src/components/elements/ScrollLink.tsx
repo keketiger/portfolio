@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { scrollToElementById } from '../../utils/scrollToElements';
+import { scrollToElementById } from '../../utils/helper';
 
 interface ScrollLinkProps extends React.HTMLAttributes<HTMLButtonElement> {
   targetId: string;

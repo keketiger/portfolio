@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { scrollToElementById } from '../../utils/scrollToElements';
+import { scrollToElementById } from '../../utils/helper';
 import { Link } from 'react-router';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'success' | 'danger';
@@ -19,7 +19,7 @@ type ButtonAsRouteLink = BaseProps & { to: string; href?: undefined };
 type ButtonProps = ButtonAsButton | ButtonAsAnchor | ButtonAsRouteLink;
 
 const VariantStyles: Record<ButtonVariant, string> = {
-  primary: 'bg-zinc-800 border-zinc-600 text-slate-200 hover:bg-zinc-700',
+  primary: 'bg-sky-100 border-gray-200 text-blue-500 hover:bg-sky-200',
   secondary: 'bg-zinc-700 border-zinc-500 text-slate-100 hover:bg-zinc-600',
   success: 'bg-green-800 border-green-600 text-white hover:bg-green-700',
   danger: 'bg-red-800 border-red-600 text-white hover:bg-red-700'
@@ -37,7 +37,7 @@ export default function Button(props: ButtonProps) {
   } = props;
 
   const commonClasses = clsx(
-    'inline-flex cursor-pointer items-center justify-center rounded-xl border-[1.58px] px-5 py-3 font-medium shadow-md transition-all duration-300 hover:translate-y-[-.335rem] hover:shadow-xl',
+    'inline-flex cursor-pointer items-center justify-center rounded-xl border-[1.58px] px-5 py-3 font-bold shadow-md transition-all duration-300 hover:translate-y-[-.335rem] hover:shadow-xl',
     VariantStyles[variant],
     className
   );
